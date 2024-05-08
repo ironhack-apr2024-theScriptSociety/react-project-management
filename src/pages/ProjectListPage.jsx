@@ -1,34 +1,41 @@
 import axios from 'axios'
 import { useState, useEffect } from "react";
 
-function ProjectListPage(){
+import { API_URL } from "../utils/constants"
+
+function ProjectListPage() {
 
     const [projects, setProjects] = useState(null);
 
+
     const getProjects = () => {
-        axios.get("https://project-management-api-4641927fee65.herokuapp.com/projects")
-            .then( response => {
-                setProjects(response.data);
+        axios.get(`${API_URL}/projects`)
+            .then(response => {
+                const projectsFromApi = response.data.reverse();
+                setProjects(projectsFromApi);
             })
-            .catch( e => console.log("error getting projects from API", e) )
+            .catch(e => console.log("error getting projects from API", e))
     }
+
 
     useEffect(() => {
         getProjects();
     }, []);
 
-    return(
-        <>
+
+    return (
+        <div className='ProjectListPage'>
+
             <h1>Number of projects: {projects?.length}</h1>
 
-            { projects?.map( (project) => {
-                return(
+            {projects?.map((project) => {
+                return (
                     <div className="ProjectCard card">
                         <h3>{project.title}</h3>
                     </div>
                 )
-            }) }
-        </>
+            })}
+        </div>
     );
 }
 
