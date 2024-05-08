@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import HomePage from "./pages/HomePage"
 import ProjectListPage from "./pages/ProjectListPage"
+import CreateProjectPage from "./pages/CreateProjectPage"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectListPage />} />
+        <Route path="/projects/create" element={<CreateProjectPage />} />
         <Route path="*" element={<h2>Page not found</h2>} />
       </Routes>
 
