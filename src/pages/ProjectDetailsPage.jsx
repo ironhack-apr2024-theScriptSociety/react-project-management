@@ -49,6 +49,13 @@ function ProjectDetailsPage() {
                     </li>
                 ))}
 
+
+            <Link to={`/projects/edit/${projectId}`}>
+                <button>Edit</button>
+            </Link>
+
+            <hr />
+
             <Link to="/projects">
                 <button>Back to projects</button>
             </Link>
