@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 import { API_URL } from "../utils/constants"
 
@@ -34,9 +35,11 @@ function ProjectListPage() {
 
             {projects?.map((project) => {
                 return (
-                    <div className="ProjectCard card">
-                        <h3>{project.title}</h3>
-                    </div>
+                    <Link to={`/projects/${project.id}`} key={project.id}>
+                        <div className="ProjectCard card">
+                            <h3>{project.title}</h3>
+                        </div>
+                    </Link>
                 )
             })}
         </div>
