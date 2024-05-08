@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { API_URL } from "../utils/constants"
+import AddTask from "../components/AddTask";
 
 
 function ProjectDetailsPage() {
@@ -52,6 +53,11 @@ function ProjectDetailsPage() {
                     <p>{project.description}</p>
                 </>
             )}
+
+            <AddTask 
+                projectId={projectId} 
+                callbackToUpdate={getProject}
+            />
 
             {project &&
                 project.tasks.map((task) => (
